@@ -8,6 +8,7 @@
 #ifndef UFO_INSTANTIATEOBSFILTERFACTORY_H_
 #define UFO_INSTANTIATEOBSFILTERFACTORY_H_
 
+#include "ufo/filters/PracticalBoundsCheck.h"
 #include "oops/base/instantiateObsFilterFactory.h"
 #include "oops/interface/ObsFilter.h"
 #include "ufo/filters/BackgroundCheck.h"
@@ -77,6 +78,8 @@ template<typename MODEL> void instantiateObsFilterFactory() {
            DerivativeCheckMaker("Derivative Check");
   static oops::FilterMaker<MODEL, oops::ObsFilter<MODEL, ufo::TrackCheckShip> >
            ShipTrackCheckMaker("Ship Track Check");
+  static oops::FilterMaker<MODEL, oops::ObsFilter<MODEL, ufo::PracticalBoundsCheck> >
+     practicalBoundsCheckMaker("Practical Bounds Check");
 
   // For backward compatibility, register some filters under legacy names used in the past
   static oops::FilterMaker<MODEL, oops::ObsFilter<MODEL, ufo::Gaussian_Thinning> >
